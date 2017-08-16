@@ -87,10 +87,10 @@ if (session_status() == PHP_SESSION_ACTIVE) {
               echo '<form action="index.php" method="POST">';
               echo "<table>";
               echo "<br>";
-              echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
+              echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
               echo '<td class="col-ls-2 col-sm-2 col-xs-2 mytodo '.$row['color'].'" >';
               echo '<p class="col-md-12 mytodotextt '.$row['colortext'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
-              echo "<td class=\"col-md-1 col-sm-2 col-xs-2\" style=\"font-size:10px;color:#d3d3d3;\">";
+              echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
               echo '<input type="hidden" name="id" value="'.$row['id'].'">';
               echo "<input type='submit' value='Delete' class=\"btn btn-warning btn-xs\" style=\"float:right;\">";
               echo "<span>";
