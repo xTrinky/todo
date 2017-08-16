@@ -52,8 +52,8 @@ if (session_status() == PHP_SESSION_ACTIVE) {
            </div>
         <br><br>
         <div class="col-md-4 col-sm-6 col-xs-5">
-        <span style="color:#FFF;font-size:12px;">Background Color</span>
         <select name="color">
+            <option value="white">Background Color</option>
             <option value="white">White</option>
             <option value="black">Black</option>
             <option value="red">Red</option>
@@ -63,8 +63,8 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <option value="orange">Orange</option>
         </select>
         &nbsp&nbsp&nbsp
-        <span style="color:#FFF;font-size:12px;">Font Color</span>
         <select name="colortext">
+            <option value="blacktext">Text Color</option>
             <option value="blacktext">Black</option>
             <option value="whitetext">White</option>
             <option value="redtext">Red</option>
