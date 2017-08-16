@@ -110,10 +110,11 @@ body {
 .mytodo {
   padding:10px;
   border-radius:3px;
+  max-width: 200px;
 }
 
 .mytodotextt {
-  overflow-wrap: break-word
+  overflow-wrap: break-word;
 }
 
 .white  { background-color: #ecf0f1; }
