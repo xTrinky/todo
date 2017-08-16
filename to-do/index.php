@@ -1,6 +1,6 @@
 <?php
 include 'to_do.php';
-//logout button function
+//logout button function!!
 $logout = filter_input(INPUT_POST, 'logout');
 if (session_status() == PHP_SESSION_ACTIVE) {
    if (isset($logout)) {
