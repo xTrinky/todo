@@ -13,25 +13,23 @@
      echo "<h2 style=\"color:#de8009\">You have been loged out</h2>";
     }
 
-    //main functions if the button is pressed
-    if (isset($_POST['submit'])){
+
+    if (isset($_POST['username']) && isset($_POST['password'])){
     $_SESSION['login_user'] = $username;
     $username = mysqli_real_escape_string($conn, $username);
     $password = mysqli_real_escape_string($conn, $password);
 
     //HASH decrypt PASSWORD
     $pquery = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
+    $row_cnt = mysqli_num_rows($pquery);
     $rowpass = mysqli_fetch_array($pquery,MYSQLI_ASSOC);
     $hash_pwd = $rowpass['password'];
     $hash = password_verify($password, $hash_pwd);
-    //SEARCH IN DATABASE
-    $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' and password='$hash_pwd'");
-    $row_cnt = mysqli_num_rows($query);
-     if ($row_cnt != 0){
-          header("location: index.php?login=ok");
-      }
-      else{
-          $error = "<h4 style=\"color:#de8009\">Username oder Passwort falsch!</h4>";
+
+    if (0 == $row_cnt || false === $hash) {
+      $error = "<h4 style=\"color:#de8009\">Username oder Passwort falsch!</h4>";
+    } else {
+      header("location: index.php?login=ok");
     }
     mysqli_close($conn);
     }
@@ -43,7 +41,9 @@
      <title>Login</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+     <link rel="stylesheet" href="inc/sweeetalert.css">
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="inc/sweetalert.min.js"></script>
      <link rel="stylesheet" href="style.css">
  </head>
    </head>
