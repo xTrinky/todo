@@ -81,7 +81,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
      <input type="submit" value="Submit" class="btn btn-success" /><br><br><br><br>
     </form>
       <br><br><br><br>
-      <div class="container">
+      <div class="container col-md-offset-1">
        <?php
            if ($numrow > 0 && $login_session == $rowuser) {
              while($row = $result->fetch_assoc()) {
@@ -89,27 +89,26 @@ if (session_status() == PHP_SESSION_ACTIVE) {
               echo "<table>";
               echo "<br>";
               echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
-              echo '<td class="col-ls-2 col-sm-2 col-xs-2 mytodo '.$row['color'].'" >';
+              echo '<td class="col-lg-4 col-sm-4 col-xs-4 mytodo '.$row['color'].'">';
               echo '<p class="col-md-12 mytodotextt '.$row['colortext'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
-              echo '<form action="index.php" method="POST">';
-              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<input type="hidden" name="undone" value="1">';
-              echo "<input type='submit' value='Undone' class=\"btn btn-warning btn-xs \" style=\"float:right;\">";
-              echo '</form>';
-              echo '<form action="index.php" method="POST">';
-              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<input type="hidden" name="done" value="1">';
-              echo "<input type='submit' value='Done' class=\"btn btn-primary btn-xs sweet\" style=\"float:right;\">";
-              echo '</form>';
+              echo '<label style="opacity: '.$row['done'].'; float:right "><i class="fa fa-check" aria-hidden="true"></i></label>';
               echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
               echo '<form action="index.php" method="POST">';
               echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<input type="hidden" name="delete" value="1">';
-              echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs\" style=\"float:right;\">";
+              echo '<input type="hidden" name="done" value="1">';
+              echo "<input type='submit' value='Done' class=\"btn btn-primary btn-xs sweet\">";
               echo '</form>';
-              echo '<label style="opacity: '.$row['done'].' "><i class="fa fa-check" aria-hidden="true"></i></label>';
+              echo '<form action="index.php" method="POST">';
+              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+              echo '<input type="hidden" name="undone" value="1">';
+              echo "<input type='submit' value='Undone' class=\"btn btn-warning btn-xs \">";
+              echo '</form>';
+              echo '<form action="index.php" method="POST">';
+              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+              echo '<input type="hidden" name="delete" value="1">';
+              echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs warning\" style=\"\">";
+              echo '</form>';
               echo "<span>";
-              echo "<br>";
               echo 'Posted on: ' . ' <br>' . htmlspecialchars($row['tododate']);
               echo "</span>";
               echo '</td>';
@@ -138,6 +137,24 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 	})
   $( ".sweet" ).click(function() {
     swal("Good job!", "You did it", "success")
+});
+
+$( ".warning" ).click(function(event) {
+  var $this = $(this);
+  event.preventDefault();
+  swal({
+  title: "Are you sure?",
+  text: "You will not be able to recover this TO-DO!",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Yes, delete it!",
+  closeOnConfirm: false
+},
+function(){
+  // swal("Deleted!", "Your imaginary file has been deleted.", "success");
+  $this.closest('form').submit();
+});
 });
 
 </script>

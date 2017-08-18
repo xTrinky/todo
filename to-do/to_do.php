@@ -55,7 +55,7 @@ if (!empty($done)) {
   if (!mysqli_query($conn,$do)) {
     echo "Error inserting in table" . mysqli_error($conn);
   }
-  sleep(2);
+  sleep(1);
   header('Location: index.php');
   exit();
   }
