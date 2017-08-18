@@ -32,7 +32,7 @@
     }
 
     //CREATE TABLE for data
-    $tabledata = "CREATE TABLE IF NOT EXISTS to_do.data (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,todotext TEXT NOT NULL, color TEXT NOT NULL, colortext TEXT NOT NULL, tododate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, mydate DATE DEFAULT NULL, todouname VARCHAR(250) NOT NULL) ";
+    $tabledata = "CREATE TABLE IF NOT EXISTS to_do.data (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,todotext TEXT NOT NULL, color TEXT NOT NULL, colortext TEXT NOT NULL, tododate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, mydate DATE DEFAULT NULL, todouname VARCHAR(250) NOT NULL, done BOOLEAN DEFAULT FALSE) ";
 
     //TABLE QUERY for data
     if (!mysqli_query($conn, $tabledata)) {

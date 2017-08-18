@@ -21,7 +21,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="inc/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="inc/sweetalert.css" />
   </head>
   <body>
@@ -86,22 +86,34 @@ if (session_status() == PHP_SESSION_ACTIVE) {
            if ($numrow > 0 && $login_session == $rowuser) {
              while($row = $result->fetch_assoc()) {
                if ($row["todouname"] == $_SESSION['login_user']) {
-              echo '<form action="index.php" method="POST">';
               echo "<table>";
               echo "<br>";
               echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
               echo '<td class="col-ls-2 col-sm-2 col-xs-2 mytodo '.$row['color'].'" >';
               echo '<p class="col-md-12 mytodotextt '.$row['colortext'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
-              echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
+              echo '<form action="index.php" method="POST">';
               echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo "<input type='submit' value='Delete' class=\"btn btn-warning btn-xs\" style=\"float:right;\">";
+              echo '<input type="hidden" name="undone" value="1">';
+              echo "<input type='submit' value='Undone' class=\"btn btn-warning btn-xs \" style=\"float:right;\">";
+              echo '</form>';
+              echo '<form action="index.php" method="POST">';
+              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+              echo '<input type="hidden" name="done" value="1">';
+              echo "<input type='submit' value='Done' class=\"btn btn-primary btn-xs sweet\" style=\"float:right;\">";
+              echo '</form>';
+              echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
+              echo '<form action="index.php" method="POST">';
+              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+              echo '<input type="hidden" name="delete" value="1">';
+              echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs\" style=\"float:right;\">";
+              echo '</form>';
+              echo '<label style="opacity: '.$row['done'].' "><i class="fa fa-check" aria-hidden="true"></i></label>';
               echo "<span>";
               echo "<br>";
               echo 'Posted on: ' . ' <br>' . htmlspecialchars($row['tododate']);
               echo "</span>";
               echo '</td>';
               echo '</table>';
-              echo '</form>';
               }
               }
              }
@@ -124,5 +136,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 			autoclose: true
 		}).datepicker("setDate", "0")
 	})
+  $( ".sweet" ).click(function() {
+    swal("Good job!", "You did it", "success")
+});
+
 </script>
 </html>

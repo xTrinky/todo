@@ -173,3 +173,12 @@ body {
 .orangetext {
   color: #f39c12;
 }
+
+.vis {
+  visibility: hidden;
+}
+
+.fa-check {
+  color: #27ae60;
+  font-size: 50px;
+}

@@ -7,9 +7,12 @@ $mydate= filter_input(INPUT_POST, 'mydate');
 $id = filter_input(INPUT_POST, 'id');
 $color = filter_input(INPUT_POST, 'color');
 $colortext = filter_input(INPUT_POST, 'colortext');
+$done = filter_input(INPUT_POST, 'done');
+$undone = filter_input(INPUT_POST, 'undone');
+$delete = filter_input(INPUT_POST, 'delete');
 
 //add data to db
-if (!empty($_POST['todotext'])) {
+if (!empty($todotext)) {
 $insert = 'INSERT INTO `to_do`.`data` (`todotext`,`todouname`,`mydate`,`color`,`colortext`)
 VALUES ("'.mysqli_real_escape_string($conn, $todotext).'",
 "'.mysqli_real_escape_string($conn, $_SESSION['login_user']).'",
@@ -27,12 +30,13 @@ if (!mysqli_query($conn,$insert)){
 exit;
 }
 
+
 //DELETE BUTTON function
-if (!empty($id)){
+if (!empty($delete)){
   $id  = intval($id);
   $del = "DELETE FROM data WHERE id = '$id'";
   if (!mysqli_query($conn, $del)) {
-      echo "Error creating table: " . mysqli_error($conn);
+      echo "Error deleting table: " . mysqli_error($conn);
 }
 header('Location: index.php');
 exit;
@@ -43,6 +47,33 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE uname='$username'");
 $sqldata = "SELECT * FROM data ORDER BY mydate";
 $result = mysqli_query($conn, $sqldata);
 $numrow = mysqli_num_rows($result);
+
+if (!empty($done)) {
+   while($row = $result->fetch_assoc()) {
+     if ($row['id'] == $id) {
+  $do = "UPDATE data SET done='1' WHERE id = '$id'";
+  if (!mysqli_query($conn,$do)) {
+    echo "Error inserting in table" . mysqli_error($conn);
+  }
+  sleep(2);
+  header('Location: index.php');
+  exit();
+  }
+  }
+}
+
+if (!empty($undone)) {
+   while($row = $result->fetch_assoc()) {
+     if ($row['id'] == $id) {
+  $do = "UPDATE data SET done='0' WHERE id = '$id'";
+  if (!mysqli_query($conn,$do)) {
+    echo "Error inserting in table" . mysqli_error($conn);
+  }
+ header('Location: index.php');
+  exit;
+  }
+  }
+}
 
 mysqli_close($conn);
 ?>
