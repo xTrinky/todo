@@ -21,7 +21,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="inc/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="inc/style.css">
     <link rel="stylesheet" href="inc/sweetalert.css" />
   </head>
   <body>
@@ -53,7 +53,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
              </div>
            </div>
         <br><br>
-        <div class="col-md-4 col-sm-6 col-xs-5">
+        <div class="col-md-5 col-sm-6 col-xs-5">
         <select name="color">
             <option value="white">Background Color</option>
             <option value="white">White</option>
@@ -75,6 +75,15 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <option value="purpletext">Purple</option>
             <option value="orangetext">Orange</option>
         </select>
+        &nbsp&nbsp&nbsp
+        <select name="textsize">
+            <option>Text Size</option>
+            <option value="t2">14px</option>
+            <option value="t4">18px</option>
+            <option value="t5">20px</option>
+            <option value="t6">22px</option>
+            <option value="t7">24px</option>
+        </select>
       </div>
       <br><br>
      <textarea type="text" name="todotext" rows="8" class="form-control" placeholder="Type your list"></textarea><br><br>
@@ -90,7 +99,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
               echo "<br>";
               echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
               echo '<td class="col-lg-4 col-sm-4 col-xs-4 mytodo '.$row['color'].'">';
-              echo '<p class="col-md-12 mytodotextt '.$row['colortext'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
+              echo '<p class="col-md-12 mytodotextt '.$row['colortext'].' ' . ' '.$row['textsize'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
               echo '<label style="opacity: '.$row['done'].'; float:right "><i class="fa fa-check" aria-hidden="true"></i></label>';
               echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
               echo '<form action="index.php" method="POST">';

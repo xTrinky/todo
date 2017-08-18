@@ -1,9 +1,9 @@
 body {
   text-align: center;
   background: rgb(160, 43, 219);
-  background: -moz-linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("img/ss.jpg") no-repeat;
-  background: -webkit-linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("img/ss.jpg") no-repeat;
-  background: linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("img/ss.jpg") no-repeat;
+  background: -moz-linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("../img/ss.jpg") no-repeat;
+  background: -webkit-linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("../img/ss.jpg") no-repeat;
+  background: linear-gradient(45deg, rgba(160, 43, 219, 0.85) 0%, rgba(30, 126, 150, 0.85) 100%), url("../img/ss.jpg") no-repeat;
   padding: 25px auto;
   margin: 25px auto;
   background-attachment: fixed;
@@ -113,7 +113,6 @@ body {
 
 .mytodotextt {
   overflow-wrap: break-word;
-  font-size: 18px;
   letter-spacing: 1px;
   line-height: 0.8cm;
 }
@@ -181,4 +180,20 @@ body {
 .fa-check {
   color: #2ecc71;
   font-size: 40px;
+}
+
+.t2 {
+  font-size: 14px;
+}
+.t4 {
+  font-size: 18px;
+}
+.t5 {
+  font-size: 20px;
+}
+.t6 {
+  font-size: 22px;
+}
+.t7 {
+  font-size: 24px;
 }
