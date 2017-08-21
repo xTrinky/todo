@@ -43,8 +43,10 @@ if (!empty($delete)){
 header('Location: index.php');
 exit;
 }
+
 //look for usernames
 $query = mysqli_query($conn, "SELECT * FROM users WHERE uname='$username'");
+
 //order text
 $sqldata = "SELECT * FROM data ORDER BY mydate";
 $result = mysqli_query($conn, $sqldata);

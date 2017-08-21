@@ -38,8 +38,8 @@ if (session_status() == PHP_SESSION_ACTIVE) {
    </div>
    <br><br>
     <div class="form-group col-lg-8 col-lg-offset-2">
+        <form class="form-horizontal" action="index.php" method="post">
            <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-9">
-            <form class="form-horizontal" action="index.php" method="post">
              <div class="form-group ">
               <div class="col-sm-10">
                <div class="input-group">
@@ -144,8 +144,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 			autoclose: true
 		}).datepicker("setDate", "0")
 	})
-  $( ".sweet" ).click(function() {
-    swal("Good job!", "You did it", "success")
+
+$( ".sweet" ).click(function() {
+   swal("Good job!", "You did it", "success")
 });
 
 $( ".warning" ).click(function(event) {
