@@ -28,17 +28,22 @@ if (session_status() == PHP_SESSION_ACTIVE) {
   </head>
   <body  class="animated fadeInDown">
    <div class="container-fluid">
+
      <div class="col-md-3 col-md-offset-7">
        <form action="index.php" method="POST">
          <?php echo "<span style=\"font-size:16px;color:#d3d3d3;\">Welcome back," . "   " . $_SESSION['login_user'] . "&nbsp&nbsp&nbsp" . "</span>"; ?>
          <input type="submit" value="Logout" name="logout" class="btn btn-danger"/>
+          <?php  if ( $user['usertype'] == 'administrator'){  echo '<a href="2ad88a5cd93.php"><input type="button" value="Admin Panel" class="btn btn-info"/></a>';   }  ?>
        </form>
      </div>
+
    <div class="col-sm-6 col-md-4 col-md-offset-4">
      <h1 style="color:#fff;font-family: 'Berkshire Swash';">Type your TO-DO's</h1>
      <br><br><br>
    </div>
+
    <br><br>
+
     <div class="form-group col-lg-8 col-lg-offset-2">
         <form class="form-horizontal" action="index.php" method="post">
            <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-9">
@@ -54,7 +59,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
               </div>
              </div>
            </div>
+
         <br><br>
+
         <div class="col-md-5 col-sm-6 col-xs-5">
         <select name="color">
             <option value="white">Background Color</option>
@@ -66,7 +73,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <option value="purple">Purple</option>
             <option value="orange">Orange</option>
         </select>
+
         &nbsp&nbsp&nbsp
+
         <select name="colortext">
             <option value="blacktext">Text Color</option>
             <option value="blacktext">Black</option>
@@ -77,7 +86,9 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <option value="purpletext">Purple</option>
             <option value="orangetext">Orange</option>
         </select>
+
         &nbsp&nbsp&nbsp
+
         <select name="textsize">
             <option>Text Size</option>
             <option value="t2">14px</option>
@@ -87,11 +98,15 @@ if (session_status() == PHP_SESSION_ACTIVE) {
             <option value="t7">24px</option>
         </select>
       </div>
+
       <br><br>
+
      <textarea type="text" name="todotext" rows="8" class="form-control" placeholder="Type your list"></textarea><br><br>
      <input type="submit" value="Submit" class="btn btn-success" /><br><br><br><br>
     </form>
+
       <br><br><br><br>
+
       <div class="container col-md-offset-1">
        <?php
            if ($numrow > 0 && $login_session == $rowuser) {
@@ -100,41 +115,42 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 
               echo "<table>";
               echo "<br>";
-              echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" .'You have something for '. '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
+
+              echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" . 'You have something for ' . '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
 
               echo '<td class="col-lg-4 col-sm-4 col-xs-4 mytodo '.$row['color'].'">';
-              echo '<p class="col-md-12 mytodotextt '.$row['colortext'].' ' . ' '.$row['textsize'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
-              echo '<label style="opacity: '.$row['done'].'; float:right "><i class="fa fa-check" aria-hidden="true"></i></label>';
+                 echo '<p class="col-md-12 mytodotextt '.$row['colortext'].' ' . ' '.$row['textsize'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
+                     echo '<label style="opacity: '.$row['done'].'; float:right "><i class="fa fa-check" aria-hidden="true"></i></label>';
 
               echo "<td class=\"col-md-1 col-sm-1 col-xs-1\" style=\"font-size:10px;color:#d3d3d3;\">";
 
                    if ($row['done'] == FALSE){
                        echo '<form action="index.php" method="POST">';
-                       echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
-                       echo '<input type="hidden" name="done" value="1">';
-                       echo "<input type='submit' value='Done' class=\"btn btn-success btn-xs sweet\">";
+                         echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
+                         echo '<input type="hidden" name="done" value="1">';
+                         echo "<input type='submit' value='Done' class=\"btn btn-success btn-xs sweet\">";
                        echo '</form>';
                    }else{
                        echo '<form action="index.php" method="POST">';
-                       echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
-                       echo '<input type="hidden" name="undone" value="1">';
-                       echo "<input type='submit' value='Undone' class=\"btn btn-primary btn-xs sweetnot\">";
+                         echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
+                         echo '<input type="hidden" name="undone" value="1">';
+                         echo "<input type='submit' value='Undone' class=\"btn btn-primary btn-xs sweetnot\">";
                        echo '</form>';
                    }
 
               echo '<form action="index.php" method="POST">';
-              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<a href="edit.php?id='.$row['id'].'"><input type="button" value="Edit" class="btn btn-warning btn-xs" ></a>';
+                echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+                echo '<a href="edit.php?id='.$row['id'].'"><input type="button" value="Edit" class="btn btn-warning btn-xs" ></a>';
               echo '</form>';
 
               echo '<form action="index.php" method="POST">';
-              echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<input type="hidden" name="delete" value="1">';
-              echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs warning\" style=\"\">";
+                echo '<input type="hidden" name="id" value="'.$row['id'].'">';
+                echo '<input type="hidden" name="delete" value="1">';
+                echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs warning\" style=\"\">";
               echo '</form>';
 
               echo "<span>";
-              echo 'Posted on: ' . ' <br>' . htmlspecialchars($row['tododate']);
+                 echo 'Posted on: ' . ' <br>' . htmlspecialchars($row['tododate']);
               echo "</span>";
 
               echo '</td>';

@@ -2,6 +2,7 @@
 include_once ("config.php");
 include_once ("session.php");
 
+//POST INPUTS
 $todotext = filter_input(INPUT_POST, 'todotext');
 $mydate= filter_input(INPUT_POST, 'mydate');
 $id = filter_input(INPUT_POST, 'id');
@@ -32,6 +33,9 @@ if (!mysqli_query($conn,$insert)){
 exit;
 }
 
+//check for admin
+$checkuser = mysqli_query($conn, "SELECT usertype FROM users WHERE username = '$user_check' ");
+$user = mysqli_fetch_array($checkuser,MYSQLI_ASSOC);
 
 //DELETE BUTTON function
 if (!empty($delete)){
@@ -44,14 +48,12 @@ header('Location: index.php');
 exit;
 }
 
-//look for all with the username
-$query = mysqli_query($conn, "SELECT done FROM `data`");
-
 //order text
 $sqldata = "SELECT * FROM data ORDER BY done && mydate";
 $result = mysqli_query($conn, $sqldata);
 $numrow = mysqli_num_rows($result);
 
+//Done Button Function
 if (!empty($done)) {
    while($row = $result->fetch_assoc()) {
      if ($row['id'] == $id) {
@@ -66,6 +68,7 @@ if (!empty($done)) {
   }
 }
 
+//Undone Button Function
 if (!empty($undone)) {
    while($row = $result->fetch_assoc()) {
      if ($row['id'] == $id) {
@@ -79,6 +82,6 @@ if (!empty($undone)) {
   }
   }
 }
-
+//Close connection with DB
 mysqli_close($conn);
 ?>

@@ -55,19 +55,26 @@
    <body>
      <div class="container animated bounceInLeft">
        <div class="row">
+
          <div class="col-sm-6 col-md-4 col-md-offset-4">
+
                <div class="account-wall">
                  <h3 class="text-center login-title">Login</h3>
-                 <img class="profile-img" src="img/full-user.png" alt="">
+                     <img class="profile-img" src="img/full-user.png" alt="">
+                   
                  <?php echo $error; ?>
+                   
                  <form action="login.php" method="POST"  class="form-signin">
-                 <input type="username" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
-                 <input type="password" name="password" id="password"  class="form-control" placeholder="Password" required>
-                 <button type="submit"class="btn btn-lg btn-primary btn-block" name="submit" >Sign in</button>
+                    <input type="username" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+                     <input type="password" name="password" id="password"  class="form-control" placeholder="Password" required>
+                    <button type="submit"class="btn btn-lg btn-primary btn-block" name="submit" >Sign in</button>
                  </form>
+                   
                  <a href="register.php" class="text-center new-account">Create an account </a>
                </div>
+
          </div>
+
        </div>
      </div>
    </body>

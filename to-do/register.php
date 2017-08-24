@@ -68,23 +68,29 @@ mysqli_close($conn);
 <body>
 <div class="container">
   <div class="row animated bounceInLeft" >
+
     <div class="col-sm-6 col-md-4 col-md-offset-4 ">
+
           <div class="account-wall">
             <h3 class="text-center login-title">Register</h3>
-            <img class="profile-img-reg" src="img/photo.jpg.png" alt="">
+              <img class="profile-img-reg" src="img/photo.jpg.png" alt="">
+            
             <form action="register.php" method="POST"  class="form-signin">
-            <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname*" required>
-            <input type="text" name="nachname" id="nachname"  class="form-control" placeholder="Nachname*" required><br>
-            <input type="email" name="mail" id="emailAddress"  class="form-control" placeholder="Email*" required>
-            <?php echo $checkemail; ?> <br>
-            <input type="username" name="username" id="username" class="form-control" placeholder="Username*" required autofocus>
-            <?php echo $checkusername; ?>
-            <input type="password" name="password" id="password"  class="form-control" placeholder="Password*" required>
-            <button type="submit"class="btn btn-lg btn-success btn-block" name="submit">Sign up </button>
+              <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname*" required>
+              <input type="text" name="nachname" id="nachname"  class="form-control" placeholder="Nachname*" required><br>
+              <input type="email" name="mail" id="emailAddress"  class="form-control" placeholder="Email*" required>
+               <?php echo $checkemail; ?> <br>
+             <input type="username" name="username" id="username" class="form-control" placeholder="Username*" required autofocus>
+               <?php echo $checkusername; ?>
+             <input type="password" name="password" id="password"  class="form-control" placeholder="Password*" required>
+               <button type="submit"class="btn btn-lg btn-success btn-block" name="submit">Sign up </button>
             </form>
+            
             <a href="login.php" class="text-center new-account">Back to Log in</a>
           </div>
+      
     </div>
+
   </div>
 </div>
 </body>

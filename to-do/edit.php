@@ -50,24 +50,31 @@
        <h1 style="color:#fff;font-family: 'Berkshire Swash';">Edit your TO-DO</h1>
        <br><br><br>
     </div>
+
     <br><br>
+
     <div class="form-group col-lg-8 col-lg-offset-2">
-    <form action="<?php $url ?>" method="POST">
-        <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-9">
-            <div class="form-group ">
-                <div class="col-sm-10">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar">
-                            </i>
+
+        <form action="<?php $url ?>" method="POST">
+
+            <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-9">
+                <div class="form-group ">
+                    <div class="col-sm-10">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar">
+                                </i>
+                            </div>
+                            <input class="form-control" id="mydate" name="mydate" type="text"/>
                         </div>
-                        <input class="form-control" id="mydate" name="mydate" type="text"/>
                     </div>
                 </div>
             </div>
-        </div>
+
         <br><br>
+
         <div class="col-md-5 col-sm-6 col-xs-5">
+
             <select name="color">
                 <option value="<?php echo $rowpass['color'] ?>">Background Color</option>
                 <option value="white">White</option>
@@ -78,7 +85,9 @@
                 <option value="purple">Purple</option>
                 <option value="orange">Orange</option>
             </select>
+
             &nbsp&nbsp&nbsp
+
             <select name="colortext">
                 <option value="<?php echo $rowpass['colortext'] ?>">Text Color</option>
                 <option value="blacktext">Black</option>
@@ -89,7 +98,9 @@
                 <option value="purpletext">Purple</option>
                 <option value="orangetext">Orange</option>
             </select>
+
             &nbsp&nbsp&nbsp
+
             <select name="textsize">
                 <option>Text Size</option>
                 <option value="t2">14px</option>
@@ -99,14 +110,17 @@
                 <option value="t7">24px</option>
             </select>
         </div>
+
         <br><br>
+
         <?php $url = "edit.php?id=".$id; $colors = $rowpass['textsize'] .' '. $rowpass['colortext'] . ' ' . $rowpass['color']; ?>
-    <textarea type="text" name="edit" rows="8" class="form-control <?php echo $colors ?>" placeholder="Type your list"><?php echo $rowpass['todotext'] ?></textarea><br><br>
-    <input type="submit" value="Submit" name="submit" class="btn btn-success" />
+        <textarea type="text" name="edit" rows="8" class="form-control <?php echo $colors ?>" placeholder="Type your list"> <?php echo $rowpass['todotext'] ?> </textarea><br><br>
+            <input type="submit" value="Submit" name="submit" class="btn btn-success" />
     </form>
     </div>
 
 </body>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 <script>

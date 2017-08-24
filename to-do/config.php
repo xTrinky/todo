@@ -41,7 +41,7 @@
     }
 
     //CREATE TABLE for users
-    $tableusers = "CREATE TABLE IF NOT EXISTS to_do.users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, vorname VARCHAR(250) NOT NULL, nachname VARCHAR(250) NOT NULL, username VARCHAR(250) NOT NULL UNIQUE, mail VARCHAR(320) NOT NULL UNIQUE, password VARCHAR(250) NOT NULL, tm TIMESTAMP) ";
+    $tableusers = "CREATE TABLE IF NOT EXISTS to_do.users (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, usertype VARCHAR(250) DEFAULT 'user', vorname VARCHAR(250) NOT NULL, nachname VARCHAR(250) NOT NULL, username VARCHAR(250) NOT NULL UNIQUE, mail VARCHAR(320) NOT NULL UNIQUE, password VARCHAR(250) NOT NULL, tm TIMESTAMP) ";
 
     //TABLE QUERY for users
     if (!mysqli_query($conn, $tableusers)) {
