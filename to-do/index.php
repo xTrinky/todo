@@ -21,10 +21,12 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="inc/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
     <link rel="stylesheet" href="inc/style.css">
     <link rel="stylesheet" href="inc/sweetalert.css" />
+    <link rel="stylesheet" href="inc/animate.css" />
   </head>
-  <body>
+  <body  class="animated fadeInDown">
    <div class="container-fluid">
      <div class="col-md-3 col-md-offset-7">
        <form action="index.php" method="post">
@@ -33,7 +35,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
        </form>
      </div>
    <div class="col-sm-6 col-md-4 col-md-offset-4">
-     <h3 style="color:#fff;">Type your TO-DO's</h3>
+     <h1 style="color:#fff;font-family: 'Berkshire Swash';">Type your TO-DO's</h1>
      <br><br><br>
    </div>
    <br><br>
@@ -166,6 +168,5 @@ function(){
   $this.closest('form').submit();
 });
 });
-
 </script>
 </html>

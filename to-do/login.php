@@ -48,11 +48,12 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <script src="inc/sweetalert.min.js"></script>
      <link rel="stylesheet" href="inc/style.css">
-     <link rel="stylesheet" href="inc/sweetalert.css" />
+     <link rel="stylesheet" href="inc/sweetalert.css">
+       <link rel="stylesheet" href="inc/animate.css">
  </head>
    </head>
    <body>
-     <div class="container">
+     <div class="container animated bounceInLeft">
        <div class="row">
          <div class="col-sm-6 col-md-4 col-md-offset-4">
                <div class="account-wall">
