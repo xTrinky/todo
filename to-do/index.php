@@ -29,7 +29,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
   <body  class="animated fadeInDown">
    <div class="container-fluid">
      <div class="col-md-3 col-md-offset-7">
-       <form action="index.php" method="post">
+       <form action="index.php" method="POST">
          <?php echo "<span style=\"font-size:16px;color:#d3d3d3;\">Welcome back," . "   " . $_SESSION['login_user'] . "&nbsp&nbsp&nbsp" . "</span>"; ?>
          <input type="submit" value="Logout" name="logout" class="btn btn-danger"/>
        </form>
@@ -111,8 +111,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
               echo '</form>';
               echo '<form action="index.php" method="POST">';
               echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-              echo '<input type="hidden" name="undone" value="1">';
-              echo "<input type='submit' value='Undone' class=\"btn btn-warning btn-xs \">";
+              echo '<a href="edit.php?id='.$row['id'].'"><input type="button" value="Edit" class="btn btn-warning btn-xs" ></a>';
               echo '</form>';
               echo '<form action="index.php" method="POST">';
               echo '<input type="hidden" name="id" value="'.$row['id'].'">';
@@ -145,7 +144,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
       toggleActive: true,
 			autoclose: true
 		}).datepicker("setDate", "0")
-	})
+	});
 
 $( ".sweet" ).click(function() {
    swal("Good job!", "You did it", "success")
