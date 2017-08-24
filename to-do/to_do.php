@@ -45,7 +45,7 @@ exit;
 }
 
 //look for all with the username
-$query = mysqli_query($conn, "SELECT * FROM users WHERE uname='$username'");
+$query = mysqli_query($conn, "SELECT done FROM `data`");
 
 //order text
 $sqldata = "SELECT * FROM data ORDER BY done && mydate";
@@ -73,6 +73,7 @@ if (!empty($undone)) {
   if (!mysqli_query($conn,$do)) {
     echo "Error inserting in table" . mysqli_error($conn);
   }
+   sleep(1);
  header('Location: index.php');
   exit;
   }
