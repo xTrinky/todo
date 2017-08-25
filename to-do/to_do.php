@@ -82,6 +82,17 @@ if (!empty($undone)) {
   }
   }
 }
+
+//logout button function!!
+$logout = filter_input(INPUT_POST, 'logout');
+if (session_status() == PHP_SESSION_ACTIVE) {
+    if (isset($logout)) {
+        session_destroy();
+        header ("location: login.php?logout=1");
+    }
+}
+
+
 //Close connection with DB
 mysqli_close($conn);
 ?>

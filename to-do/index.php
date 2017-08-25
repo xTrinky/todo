@@ -1,14 +1,7 @@
 <?php
 include 'to_do.php';
-//logout button function!!
-$logout = filter_input(INPUT_POST, 'logout');
-if (session_status() == PHP_SESSION_ACTIVE) {
-   if (isset($logout)) {
-     session_destroy();
-     header ("location: login.php?logout=1");
-   }
- }
 ?>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -33,7 +26,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
        <form action="index.php" method="POST">
          <?php echo "<span style=\"font-size:16px;color:#d3d3d3;\">Welcome back," . "   " . $_SESSION['login_user'] . "&nbsp&nbsp&nbsp" . "</span>"; ?>
          <input type="submit" value="Logout" name="logout" class="btn btn-danger"/>
-          <?php  if ( $user['usertype'] == 'administrator'){  echo '<a href="2ad88a5cd93.php"><input type="button" value="Admin Panel" class="btn btn-info"/></a>';   }  ?>
+          <?php  if ( $user['usertype'] == 'administrator' or $user['usertype'] == 'moderator'){  echo '<a href="2ad88a5cd93.php"><input type="button" value="Admin Panel" class="btn btn-info"/></a>';   }  ?>
        </form>
      </div>
 
