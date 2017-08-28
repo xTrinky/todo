@@ -4,7 +4,6 @@ include_once ("session.php");
 
 
 
-
 //POST INPUTS
 $todotext = filter_input(INPUT_POST, 'todotext');
 $mydate= filter_input(INPUT_POST, 'mydate');
@@ -41,13 +40,9 @@ exit;
 }
 
 
-
-
 //check for admin
 $checkuser = mysqli_query($conn, "SELECT usertype FROM users WHERE username = '$user_check' ");
 $user = mysqli_fetch_array($checkuser,MYSQLI_ASSOC);
-
-
 
 
 //DELETE BUTTON function
@@ -62,14 +57,10 @@ exit;
 }
 
 
-
-
 //select and order to-do text
 $sqldata = "SELECT * FROM data ORDER BY done, mydate";
 $result = mysqli_query($conn, $sqldata);
 $numrow = mysqli_num_rows($result);
-
-
 
 
 //Select to-do text with shareID
@@ -79,8 +70,6 @@ $sidresult = $sidconv['id'];
 
 $data = mysqli_query($conn, "SELECT * FROM data WHERE shareID = '$sidresult' ORDER BY mydate");
 $datanum = mysqli_num_rows($data);
-
-
 
 
 //SHARE FUNCTION
@@ -101,7 +90,6 @@ if (!empty($share)){
 }
 
 
-
 //HIDE SHARE BUTTON
 if (!empty($hide)){
     $id  = intval($id);
@@ -114,8 +102,6 @@ if (!empty($hide)){
     }
     exit;
 }
-
-
 
 
 //Done Button Function
@@ -134,8 +120,6 @@ if (!empty($done)) {
 }
 
 
-
-
 //Undone Button Function
 if (!empty($undone)) {
    while($row = $result->fetch_assoc()) {
@@ -152,8 +136,6 @@ if (!empty($undone)) {
 }
 
 
-
-
 //logout button function!!
 $logout = filter_input(INPUT_POST, 'logout');
 if (session_status() == PHP_SESSION_ACTIVE) {
@@ -162,8 +144,6 @@ if (session_status() == PHP_SESSION_ACTIVE) {
         header ("location: login.php?logout=1");
     }
 }
-
-
 
 
 //Close connection with DB

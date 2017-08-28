@@ -2,12 +2,14 @@
     include_once ("session.php");
     include_once ("config.php");
 
+
     //$id = filter_input(INPUT_GET, 'id');
     $id = $_GET['id'];
 
 
     $pquery = mysqli_query($conn, "SELECT * FROM `data` WHERE id='$id' ");
     $rowpass = mysqli_fetch_array($pquery,MYSQLI_ASSOC);
+
 
     if (isset($_POST['submit'])){
         $edit = $_POST['edit'];
@@ -51,7 +53,9 @@
        <br><br><br>
     </div>
 
+    
     <br><br>
+    
 
     <div class="form-group col-lg-8 col-lg-offset-2">
 
@@ -71,9 +75,13 @@
                 </div>
             </div>
 
+            
         <br><br>
 
+            
         <div class="col-md-5 col-sm-6 col-xs-5">
+
+
 
             <select name="color">
                 <option value="<?php echo $rowpass['color'] ?>">Background Color</option>
@@ -86,7 +94,9 @@
                 <option value="orange">Orange</option>
             </select>
 
+
             &nbsp&nbsp&nbsp
+
 
             <select name="colortext">
                 <option value="<?php echo $rowpass['colortext'] ?>">Text Color</option>
@@ -99,7 +109,9 @@
                 <option value="orangetext">Orange</option>
             </select>
 
+
             &nbsp&nbsp&nbsp
+
 
             <select name="textsize">
                 <option>Text Size</option>
@@ -111,10 +123,14 @@
             </select>
         </div>
 
+            
         <br><br>
 
+            
         <?php $url = "edit.php?id=".$id; $colors = $rowpass['textsize'] .' '. $rowpass['colortext'] . ' ' . $rowpass['color']; ?>
-        <textarea type="text" name="edit" rows="8" class="form-control <?php echo $colors ?>" placeholder="Type your list"> <?php echo $rowpass['todotext'] ?> </textarea><br><br>
+         <textarea type="text" name="edit" rows="8" class="form-control <?php echo $colors ?>" placeholder="Type your list">
+                <?php echo $rowpass['todotext'] ?>
+         </textarea><br><br>
             <input type="submit" value="Submit" name="submit" class="btn btn-success" />
     </form>
     </div>

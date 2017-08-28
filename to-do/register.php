@@ -1,7 +1,10 @@
 <?php
 include_once ("config.php");
+
+
 $checkusername = FALSE;
 $checkemail = FALSE;
+
 
 $username = filter_input(INPUT_POST, 'username');
 $password = filter_input(INPUT_POST, 'password');
@@ -9,15 +12,19 @@ $vorname = filter_input(INPUT_POST, 'vorname');
 $nachname = filter_input(INPUT_POST, 'nachname');
 $mail = filter_input(INPUT_POST, 'mail');
 
+
 //add data to db
 if (!empty($username) && !empty($password) && !empty($vorname) && !empty($nachname) && !empty($mail)) {
+
 
   $username = mysqli_real_escape_string($conn, $username);
   $mail = mysqli_real_escape_string($conn, $mail);
 
+
   //Select from db
   $check = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
   $check2 = mysqli_query($conn, "SELECT * FROM users WHERE mail = '$mail'");
+
 
   //Check if they exists
   if (mysqli_num_rows($check)) {
@@ -27,8 +34,12 @@ if (!empty($username) && !empty($password) && !empty($vorname) && !empty($nachna
     $checkemail = "<h5 style=\"color:#de8009\">This Email address already exists</h5>";
   }
   else {
+
+
     //HASH encrypt PASSWORD
     $password = password_hash($password, PASSWORD_DEFAULT);
+
+
     //add data to db query
     $insert = 'INSERT INTO `to_do`.`users` (`username`,`password`, `vorname`, `nachname`, `mail`)
       VALUES ("'.mysqli_real_escape_string($conn, $username).'",
@@ -36,6 +47,7 @@ if (!empty($username) && !empty($password) && !empty($vorname) && !empty($nachna
       "'.mysqli_real_escape_string($conn, $vorname).'",
       "'.mysqli_real_escape_string($conn, $nachname).'",
       "'.mysqli_real_escape_string($conn, $mail).'")';
+
 
     //check if they are inserted
     if (!mysqli_query($conn,$insert)){
@@ -46,6 +58,8 @@ if (!empty($username) && !empty($password) && !empty($vorname) && !empty($nachna
     exit;
   }
 }
+
+
 mysqli_close($conn);
 ?>
 
@@ -76,14 +90,18 @@ mysqli_close($conn);
               <img class="profile-img-reg" src="img/photo.jpg.png" alt="">
             
             <form action="register.php" method="POST"  class="form-signin">
-              <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname*" required>
-              <input type="text" name="nachname" id="nachname"  class="form-control" placeholder="Nachname*" required><br>
-              <input type="email" name="mail" id="emailAddress"  class="form-control" placeholder="Email*" required>
+                  <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname*" required>
+                  <input type="text" name="nachname" id="nachname"  class="form-control" placeholder="Nachname*" required><br>
+                  <input type="email" name="mail" id="emailAddress"  class="form-control" placeholder="Email*" required>
+              
                <?php echo $checkemail; ?> <br>
-             <input type="username" name="username" id="username" class="form-control" placeholder="Username*" required autofocus>
+              
+                  <input type="username" name="username" id="username" class="form-control" placeholder="Username*" required autofocus>
+              
                <?php echo $checkusername; ?>
-             <input type="password" name="password" id="password"  class="form-control" placeholder="Password*" required>
-               <button type="submit"class="btn btn-lg btn-success btn-block" name="submit">Sign up </button>
+              
+                  <input type="password" name="password" id="password"  class="form-control" placeholder="Password*" required>
+                    <button type="submit"class="btn btn-lg btn-success btn-block" name="submit">Sign up </button>
             </form>
             
             <a href="login.php" class="text-center new-account">Back to Log in</a>

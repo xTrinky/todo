@@ -24,15 +24,15 @@ include 'to_do.php';
    <div class="container-fluid">
 
 
-
      <div class="col-md-3 col-md-offset-7">
        <form action="index.php" method="POST">
          <?php echo "<span style=\"font-size:16px;color:#d3d3d3;\">Welcome back," . "   " . $_SESSION['login_user'] . "&nbsp&nbsp&nbsp" . "</span>"; ?>
          <input type="submit" value="Logout" name="logout" class="btn btn-danger"/>
-          <?php  if ( $user['usertype'] == 'administrator' or $user['usertype'] == 'moderator'){  echo '<a href="2ad88a5cd93.php"><input type="button" value="Admin Panel" class="btn btn-info"/></a>';   }  ?>
+          <?php  if ( $user['usertype'] == 'administrator' or $user['usertype'] == 'moderator') {
+                    echo '<a href="2ad88a5cd93.php"><input type="button" value="Admin Panel" class="btn btn-info"/></a>';
+                }  ?>
        </form>
      </div>
-
 
 
    <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -41,9 +41,7 @@ include 'to_do.php';
    </div>
 
 
-
    <br><br>
-
 
 
     <div class="form-group col-lg-8 col-lg-offset-2">
@@ -63,9 +61,7 @@ include 'to_do.php';
            </div>
 
 
-
         <br><br>
-
 
 
         <div class="col-md-5 col-sm-6 col-xs-5">
@@ -109,16 +105,16 @@ include 'to_do.php';
         </select>
       </div>
 
+
       <br><br>
+
 
      <textarea type="text" name="todotext" rows="8" class="form-control" placeholder="Type your list"></textarea><br><br>
      <input type="submit" value="Submit" class="btn btn-success" /><br><br><br><br>
     </form>
 
 
-
       <br><br><br><br>
-
 
 
       <div class="container">
@@ -127,45 +123,53 @@ include 'to_do.php';
             echo '<div class"container-fluid" style="float:right;">';
            while ( $ss =  mysqli_fetch_assoc($data) ) {
                echo "<table>";
-               echo "<br>";
+                echo "<br>";
 
-               echo "<p style=\"text-align:left;margin: 0 0 10px;color:#fff;font-size:12px;\">" . "<span class=\"orangetext\" style=\"font-size:12px;\">" . 'A friend shared you something for ' . '</span>' . htmlspecialchars($ss["mydate"]) . "</p>";
 
-               echo '<td class="col-lg-8 col-sm-8 col-xs-8 mytodo '.$ss['color'].'" style="min-width:250px;">';
-                echo '<p class=" '.$ss["colortext"].' ' . ' '.$ss["textsize"].'">' . nl2br(htmlspecialchars($ss["todotext"]));
+                 echo "<p style=\"text-align:left;margin: 0 0 10px;color:#fff;font-size:12px;\">" . "<span  style=\"font-size:12px;\">" .'<span class="orangetext" style="font-size:14px;" >'. $ss['todouname'].'</span>' . ' shared something for' . '</span>' . '  ' . htmlspecialchars($ss["mydate"]) . "</p>";
 
-                   echo '<form action="index.php" method="POST" style="float: right">';
-                       echo '<input type="hidden" name="id" value="'.$ss['id'].'">';
-                       echo '<input type="hidden" name="hide" value="1">';
-                       echo '<input type="submit" value="Hide" class="btn btn-warning btn-xs" >';
-                   echo '</form>';
 
-               echo '</p>';
-               echo '</td>';
-               echo '</table>';
+                  echo '<td class="col-lg-8 col-sm-8 col-xs-8 mytodo '.$ss['color'].'" style="min-width:250px;">';
+                    echo '<p class=" '.$ss["colortext"].' ' . ' '.$ss["textsize"].'">' . nl2br(htmlspecialchars($ss["todotext"]));
+
+
+                       echo '<form action="index.php" method="POST" style="float: right">';
+                            echo '<input type="hidden" name="id" value="'.$ss['id'].'">';
+                            echo '<input type="hidden" name="hide" value="1">';
+                            echo '<input type="submit" value="Hide" class="btn btn-warning btn-xs" >';
+                       echo '</form>';
+
+
+                    echo '</p>';
+                    echo '</td>';
+                 echo '</table>';
            }
            echo '</div>';
            echo '<br><br>';
        }
-
-
-
-
+       
 
        if ($numrow > 0 && $login_session == $rowuser) {
              while($row = $result->fetch_assoc()) {
                if ($row["todouname"] == $_SESSION['login_user']) {
 
+
               echo "<table>";
               echo "<br>";
 
+
               echo "<p style=\"text-align:left;margin: 0 50px 10px;color:#fff;font-size:16px;\">" . "<span style=\"font-size:11px;\">" . 'You have something for ' . '</span>' . htmlspecialchars($row["mydate"]) . "</p>";
 
-              echo '<td class="col-lg-10 col-sm-10 col-xs-10 mytodo '.$row['color'].'">';
+
+              echo '<td class="col-lg-10 col-sm-10 col-xs-10 mytodo ' .$row['color']. '">';
                  echo '<p class="col-md-12 mytodotextt '.$row['colortext'].' ' . ' '.$row['textsize'].'">' . nl2br(htmlspecialchars($row["todotext"])) .  '</p>';
-                     echo '<label style="opacity: '.$row['done'].'; float:right "><i class="fa fa-check" aria-hidden="true"></i></label>';
+                     echo '<label style="opacity: '.$row['done'].';float:right">
+                         <i class="fa fa-check" aria-hidden="true"></i>
+                             </label>';
+
 
               echo "<td class=\"col-md-2 col-sm-2 col-xs-2\" style=\"font-size:10px;color:#d3d3d3;\">";
+
 
                    if ($row['done'] == FALSE){
                        echo '<form action="index.php" method="POST">';
@@ -181,10 +185,14 @@ include 'to_do.php';
                        echo '</form>';
                    }
 
+
               echo '<form action="index.php" method="POST">';
                 echo '<input type="hidden" name="id" value="'.$row['id'].'">';
-                echo '<a href="edit.php?id='.$row['id'].'"><input type="button" value="Edit" class="btn btn-warning btn-xs" ></a>';
+                echo '<a href="edit.php?id='.$row['id'].'">
+                        <input type="button" value="Edit" class="btn btn-warning btn-xs" >
+                             </a>';
               echo '</form>';
+
 
               echo '<form action="index.php" method="POST">';
                 echo '<input type="hidden" name="id" value="'.$row['id'].'">';
@@ -192,17 +200,20 @@ include 'to_do.php';
                 echo "<input type='submit' value='Delete' class=\"btn btn-danger btn-xs warning\" style=\"\">";
               echo '</form>';
 
+
               echo "<span>";
                  echo 'Posted on: ' . ' <br>' . htmlspecialchars($row['tododate']);
               echo "</span>";
 
+
               echo '</td>';
               echo '</table>';
+
 
               echo '<form action="index.php" method="POST" style="float: left"  >';
                  echo '<input type="hidden" name="id" value="'.$row['id'].'">';
                  echo '<input type="username" name="share"  placeholder="Username" >';
-              echo "<input type='submit' value='Share' class=\"btn btn-primary btn-xs \" >";
+                 echo "<input type='submit' value='Share' class=\"btn btn-primary btn-xs \" >";
               echo '</form>';
               echo '<br>';
                }
